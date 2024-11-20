@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useState, Fragment } from 'react'
 
 import {
   signInWithGooglePopup,
@@ -17,7 +17,6 @@ const defaultFormFields = {
   password: "",
   confirmPassword: "",
 };
-
 
 const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
@@ -53,34 +52,36 @@ const SignIn = () => {
   };
 
   return (
-    <div className='sign-in-container'>
-      <h2>Sign In here</h2>
-      <span>Sign in with email and password</span>
+    <Fragment>
+      <div className='sign-in-container'>
+        <h2>Sign In here</h2>
+        <span>Sign in with email and password</span>
 
-      <form onSubmit={handleLogInSubmit}>
-        <FormInput
-          label="Email"
-          type="email"
-          required
-          onChange={handleChange}
-          name="email"
-          value={email}
-        />
-        <FormInput
-          label="Password"
-          type="password"
-          required
-          onChange={handleChange}
-          name="password"
-          value={password}
-        />
-        <Button type="submit">Sign In</Button>
-      </form>
-      <Button buttonType="google" onClick={logGoogleUser}>
-        Sign in with Google
-      </Button>
+        <form onSubmit={handleLogInSubmit}>
+          <FormInput
+            label="Email"
+            type="email"
+            required
+            onChange={handleChange}
+            name="email"
+            value={email}
+          />
+          <FormInput
+            label="Password"
+            type="password"
+            required
+            onChange={handleChange}
+            name="password"
+            value={password}
+          />
+          <Button type="submit">Sign In</Button>
+        </form>
+        <Button buttonType="google" onClick={logGoogleUser}>
+          Sign in with Google
+        </Button>
+      </div>
       <SignUpForm />
-    </div>
+    </Fragment>
   )
 };
 
