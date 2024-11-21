@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
-} from "../../utils/firebase/firebase.utils";
+} from '../../utils/firebase/firebase.utils';
 
-import FormInput from "../../components/form-input/form-input.component";
-import Button from "../../components/button/button.component";
+import FormInput from '../form-input/form-input.component';
+import Button from '../button/button.component';
 
-import "./sign-up-form.styles.scss";
+import './sign-up-form.styles.scss';
 
 const defaultFormFields = {
-  displayName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
+  displayName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
 };
 
 const SignUpForm = () => {
@@ -27,7 +27,7 @@ const SignUpForm = () => {
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      alert('Passwords do not match');
       return;
     }
     try {
@@ -38,10 +38,10 @@ const SignUpForm = () => {
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user: e-mail already in use");
+      if (error.code === 'auth/email-already-in-use') {
+        alert('Cannot create user: e-mail already in use');
       }
-      console.error("error creating user", error);
+      console.error('error creating user', error);
     }
   };
 

@@ -73,7 +73,8 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
   return await createUserWithEmailAndPassword(auth, email, password);
 }
 
-export const logInWithEmailAndPassword = async (email, password) => {
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
   const status = await validatePassword(auth, password);
   if (!status.isValid) {
     return status;
