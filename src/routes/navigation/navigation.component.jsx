@@ -1,26 +1,39 @@
 import { Outlet, Link } from 'react-router-dom';
 import { Fragment, useContext } from 'react';
-import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
+import { ReactComponent as MirrorLogo } from '../../assets/mirror.svg';
+import { signOutUser } from '../../utils/firebase/firebase.utils';
 
-import './navigation.styles.scss';
 import { UserContext } from '../../contexts/user.context';
 
+import './navigation.styles.scss';
+
 const NavigationBar = () => {
-  const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const signOutHandler = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  };
+
   return (
     <Fragment>
       <div className="navigation">
         <Link className="logo-container" to="/">
-          <CrwnLogo className="logo" />
+          <MirrorLogo className="logo" />
         </Link>
         <div className="nav-links-container">
           <Link className="nav-link" to="/shop">
-            <h3>Shop</h3>
+            <h3>SHOP</h3>
           </Link>
-          <Link className="nav-link" to="/auth">
-            <h3>Sign in</h3>
-          </Link>
+          {currentUser ? (
+            <span className="nav-link" onClick={signOutHandler}>
+              <h3>SIGN OUT</h3>
+            </span>
+          ) : (
+            <Link className="nav-link" to="/auth">
+              <h3>SIGN IN</h3>
+            </Link>
+          )}
         </div>
       </div>
       <Outlet />

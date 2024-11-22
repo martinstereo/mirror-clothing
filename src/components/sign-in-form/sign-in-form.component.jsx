@@ -8,9 +8,9 @@ import {
 
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
+import { UserContext } from '../../contexts/user.context';
 
 import './sign-in-form.styles.scss';
-import { UserContext } from '../../contexts/user.context';
 
 const defaultFormFields = {
   email: '',
@@ -33,7 +33,6 @@ const SignInForm = () => {
         email,
         password
       );
-
       setCurrentUser(user);
 
       resetFormFields();
