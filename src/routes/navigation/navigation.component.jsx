@@ -8,12 +8,7 @@ import { UserContext } from '../../contexts/user.context';
 import './navigation.styles.scss';
 
 const NavigationBar = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-
-  const signOutHandler = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  };
+  const { currentUser } = useContext(UserContext);
 
   return (
     <Fragment>
@@ -26,7 +21,7 @@ const NavigationBar = () => {
             <h3>SHOP</h3>
           </Link>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutHandler}>
+            <span className="nav-link" onClick={signOutUser}>
               <h3>SIGN OUT</h3>
             </span>
           ) : (
