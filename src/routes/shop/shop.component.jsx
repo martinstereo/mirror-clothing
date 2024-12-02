@@ -1,28 +1,12 @@
-import React, { useContext, Fragment } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import { CategoriesContext } from '../../contexts/categories.context';
-import ProductCard from '../../components/product-card/product-card.component';
-
+import { Routes, Route } from 'react-router-dom';
 import './shop.styles.scss';
+import CategoriesPreview from '../categories-preview/categories-preview.component';
 
 const Shop = () => {
-  const { categoriesMap } = useContext(CategoriesContext);
-  const navigate = useNavigate();
-
   return (
-    <>
-      {Object.keys(categoriesMap).map((title) => (
-        <Fragment key={title}>
-          <h1 onClick={() => navigate(`/${title}`)}>{title}</h1>
-          <div className='products-container'>
-            {categoriesMap[title].slice(0, 4).map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </Fragment>
-      ))}
-    </>
+    <Routes>
+      <Route index element={<CategoriesPreview />} />
+    </Routes>
   );
 };
 
