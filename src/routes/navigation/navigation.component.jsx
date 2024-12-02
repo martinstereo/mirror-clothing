@@ -1,5 +1,5 @@
 import { Outlet, Link } from 'react-router-dom';
-import { Fragment, useContext } from 'react';
+import { useContext } from 'react';
 import { ReactComponent as MirrorLogo } from '../../assets/mirror.svg';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
@@ -15,7 +15,7 @@ const NavigationBar = () => {
   const { isCartOpen } = useContext(CartContext);
 
   return (
-    <Fragment>
+    <>
       <div className='navigation'>
         <Link className='logo-container' to='/'>
           <MirrorLogo className='logo' />
@@ -38,7 +38,7 @@ const NavigationBar = () => {
         {isCartOpen && <CartDropdown />}
       </div>
       <Outlet />
-    </Fragment>
+    </>
   );
 };
 
