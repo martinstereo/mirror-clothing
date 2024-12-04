@@ -7,11 +7,6 @@ _Main landing page showcasing clothing categories._
 
 ## Key Features & Screenshots
 
-### Shopping Categories
-
-![Shop Page](./src/assets/screenshots/shop.png)
-_Browse the collection across multiple categories._
-
 ### Smart Shopping Cart
 
 ![Cart Dropdown](./src/assets/screenshots/cart.png)
@@ -21,6 +16,11 @@ _Real-time cart updates and quick checkout access._
 
 ![Sign In Page](./src/assets/screenshots/auth.png)
 _Multiple sign-in options._
+
+### Checkout Page
+
+![Checkout Page](./src/assets/screenshots/checkout.png)
+_Checkout page with context._
 
 ## Deployment with Netlify: [https://celadon-pothos-5e3531.netlify.app/](https://celadon-pothos-5e3531.netlify.app/)
 
