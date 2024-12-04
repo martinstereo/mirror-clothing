@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Mirror Clothing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern e-commerce clothing store built with React, Firebase, and Styled Components. This project is part of the Zero To Mastery React Developer course.
 
-## Available Scripts
+![Homepage](./src/assets/screenshots/homepage.png)
+_Main landing page showcasing clothing categories_
 
-In the project directory, you can run:
+## Key Features & Screenshots
 
-### `npm start`
+### Shopping Categories
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Shop Page](./src/assets/screenshots/shop.png)
+_Browse the extensive collection across multiple categories_
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Smart Shopping Cart
 
-### `npm test`
+![Cart Dropdown](./src/assets/screenshots/cart.png)
+_Real-time cart updates and quick checkout access_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Secure Authentication
 
-### `npm run build`
+![Sign In Page](./src/assets/screenshots/auth.png)
+_Multiple sign-in options_
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Deployment with Netlify: [https://celadon-pothos-5e3531.netlify.app/](https://celadon-pothos-5e3531.netlify.app/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Browse clothing categories (Hats, Jackets, Sneakers, Mens, Womens)
+- Shopping cart functionality with real-time updates
+- User authentication with email/password and Google sign-in
+- Category-based product filtering
+- Built following ZTM React best practices and patterns
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React 18
+- Firebase Authentiction & Firestore
+- Styled Components
+- React Router DOM
+- React Context for state management
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Future Technologies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Redux
+- Stripe
+- GraphQL
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Prerequisites
 
-## Learn More
+- Node.js (v14 or higher)
+- npm or yarn
+- Firebase account
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repository:
 
-### Code Splitting
+```bash
+git clone https://github.com/yourusername/mirror-clothing.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Install dependencies:
 
-### Analyzing the Bundle Size
+```
+cd mirror-clothing
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. Running the app
 
-### Making a Progressive Web App
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The app will run on http://localhost:3000/
 
-### Advanced Configuration
+## Licence
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the LICENSE file for details
