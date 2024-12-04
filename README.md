@@ -3,26 +3,26 @@
 A modern e-commerce clothing store built with React, Firebase, and Styled Components. This project is part of the Zero To Mastery React Developer course.
 
 ![Homepage](./src/assets/screenshots/homepage.png)
-_Main landing page showcasing clothing categories_
+_Main landing page showcasing clothing categories._
 
 ## Key Features & Screenshots
 
 ### Shopping Categories
 
 ![Shop Page](./src/assets/screenshots/shop.png)
-_Browse the extensive collection across multiple categories_
+_Browse the collection across multiple categories._
 
 ### Smart Shopping Cart
 
 ![Cart Dropdown](./src/assets/screenshots/cart.png)
-_Real-time cart updates and quick checkout access_
+_Real-time cart updates and quick checkout access._
 
 ### Secure Authentication
 
 ![Sign In Page](./src/assets/screenshots/auth.png)
-_Multiple sign-in options_
+_Multiple sign-in options._
 
-Deployment with Netlify: [https://celadon-pothos-5e3531.netlify.app/](https://celadon-pothos-5e3531.netlify.app/)
+## Deployment with Netlify: [https://celadon-pothos-5e3531.netlify.app/](https://celadon-pothos-5e3531.netlify.app/)
 
 ## Features
 
@@ -67,7 +67,7 @@ cd mirror-clothing
 npm install
 ```
 
-3. Running the app
+3. Run the app:
 
 ```bash
 npm start
