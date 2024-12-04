@@ -1,6 +1,6 @@
 # Mirror Clothing
 
-A modern e-commerce clothing store built with React, Firebase, and Styled Components. This project is part of the Zero To Mastery React Developer course.
+A modern e-commerce clothing store built with React, Firebase, and Styled Components. This project is part of the Zero To Mastery React Developer course. Visit deployment with Netlify: [https://celadon-pothos-5e3531.netlify.app/](https://celadon-pothos-5e3531.netlify.app/)
 
 ![Homepage](./src/assets/screenshots/homepage.png)
 _Main landing page showcasing clothing categories._
@@ -21,8 +21,6 @@ _Multiple sign-in options._
 
 ![Checkout Page](./src/assets/screenshots/checkout.png)
 _Checkout page with context._
-
-## Deployment with Netlify: [https://celadon-pothos-5e3531.netlify.app/](https://celadon-pothos-5e3531.netlify.app/)
 
 ## Features
 
