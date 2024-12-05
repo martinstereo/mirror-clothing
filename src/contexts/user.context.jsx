@@ -25,7 +25,7 @@ const userReducer = (state, action) => {
       };
 
     default:
-      throw new Error(`Unhandled type ${type} in userReducer`);
+      throw new Error(`Unhandled type ${type} in cartReducer`);
   }
 };
 
