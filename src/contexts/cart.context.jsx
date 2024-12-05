@@ -40,6 +40,7 @@ const CART_ACTION_TYPES = {
 };
 
 const cartReducer = (state, action) => {
+  console.log('dispatched');
   const { type, payload } = action;
 
   switch (type) {
@@ -85,11 +86,11 @@ export const CartProvider = ({ children }) => {
     useReducer(cartReducer, INITIAL_STATE);
 
   const updateCartItems = (newCartItems) => {
-    const newCartTotal = cartItems.reduce(
+    const newCartTotal = newCartItems.reduce(
       (total, cartItem) => total + cartItem.price * cartItem.quantity,
       0
     );
-    const newCartCount = cartItems.reduce(
+    const newCartCount = newCartItems.reduce(
       (total, cartItem) => total + cartItem.quantity,
       0
     );
