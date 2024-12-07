@@ -1,21 +1,26 @@
-import { Routes, Route, } from "react-router-dom";
+// External Libraries
+import React from 'react';
+import { Routes, Route } from "react-router-dom";
 import { useEffect } from 'react';
 import { useDispatch } from "react-redux";
+
+// Redux
+import { setCurrentUser } from "./store/user/user.action";
+import { setCategoriesMap } from "./store/categories/categories.action";
+
+// Utils
 import {
   createUserDocumentFromAuth,
   onAuthStateChangedListener,
-} from './utils/firebase/firebase.utils'
+  getCategoriesAndDocuments
+} from './utils/firebase/firebase.utils';
 
-import Home from "./routes/home/home.component";
+// Components
 import NavigationBar from "./routes/navigation/navigation.component";
-
-
-import React from 'react'
+import Home from "./routes/home/home.component";
 import Shop from "./routes/shop/shop.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Checkout from "./routes/checkout/checkout.component";
-import { setCurrentUser } from "./store/user/user.action";
-
 
 const App = () => {
   const dispatch = useDispatch();
@@ -29,6 +34,14 @@ const App = () => {
     });
 
     return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    const getCategoriesMap = async () => {
+      const categoryMap = await getCategoriesAndDocuments();
+      dispatch(setCategoriesMap(categoryMap));
+    };
+    getCategoriesMap();
   }, []);
 
 

@@ -1,14 +1,20 @@
+// External Libraries
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useContext, useState, useEffect } from 'react';
-import { CategoriesContext } from '../../contexts/categories.context';
 
+// Redux
+import { selectCategoriesMap } from '../../store/categories/categories.selector';
+
+// Components
 import ProductCard from '../../components/product-card/product-card.component';
 
+// Styles
 import { CategoryTitle, CategoryContainer } from './category.styles';
 
 const Category = () => {
+  const categoriesMap = useSelector(selectCategoriesMap);
   const { category } = useParams();
-  const { categoriesMap } = useContext(CategoriesContext);
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
