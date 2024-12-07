@@ -6,7 +6,6 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  validatePassword,
   signOut,
   onAuthStateChanged
 } from "firebase/auth";
@@ -22,7 +21,13 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-// Your web app's Firebase configuration
+/*
+  Block comment shortcut:
+  - Windows/Linux: Ctrl + Shift + /
+  - Mac: Cmd + Shift + /
+*/
+
+/* Your web app's Firebase configuration */
 const firebaseConfig = {
   apiKey: "AIzaSyAru-6Vl02WEsCTywA9zXkfxgnsKXhfxS8", // Not an exposure, only used to ID the Firebase Project
   authDomain: "mirror-clothing-db.firebaseapp.com",
@@ -66,14 +71,7 @@ export const getCategoriesAndDocuments = async () => {
   const q = query(collectionRef)
 
   const querySnapshot = await getDocs(q)
-
-  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
-
-  return categoryMap
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data())
 }
 
 // Create user and store in Firebase
@@ -109,10 +107,6 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
-  const status = await validatePassword(auth, password);
-  if (!status.isValid) {
-    return status;
-  }
   return await signInWithEmailAndPassword(auth, email, password)
 }
 
