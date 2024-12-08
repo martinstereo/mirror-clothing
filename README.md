@@ -36,9 +36,7 @@ _Checkout page_
 - Redux & Redux Logger
 - Firebase Authentication & Firestore
 - Styled Components
-- React Router DOM
 - Reselect for memoized selectors
-- SASS for additional styling
 
 ### Future Technologies
 
