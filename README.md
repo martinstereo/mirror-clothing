@@ -20,7 +20,7 @@ _Multiple sign-in options._
 ### Checkout Page
 
 ![Checkout Page](./src/assets/screenshots/checkout.png)
-_Checkout page with context._
+_Checkout page_
 
 ## Features
 
@@ -33,16 +33,19 @@ _Checkout page with context._
 ## Technologies Used
 
 - React 18
-- Firebase Authentiction & Firestore
+- Redux & Redux Logger
+- Firebase Authentication & Firestore
 - Styled Components
 - React Router DOM
-- React Context for state management
+- Reselect for memoized selectors
+- SASS for additional styling
 
 ### Future Technologies
 
-- Redux
-- Stripe
+- Stripe Payment Integration
 - GraphQL
+- TypeScript
+- Jest Testing
 
 ## Prerequisites
 
