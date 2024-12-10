@@ -8,7 +8,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"
 
 
-const middleWares = [process.env.NODE_ENV === 'development' && logger.filter(Boolean)]
+const middleWares = [process.env.NODE_ENV !== 'production' && logger].filter(Boolean)
 
 
 const persistConfig = {
