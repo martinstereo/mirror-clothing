@@ -30,10 +30,7 @@ const Category = () => {
     <>
       <CategoryTitle>{category.toUpperCase()}</CategoryTitle>
       {isLoading ? (
-        <>
-          {console.log('Spinner is loading')}
-          <Spinner />
-        </>
+        <Spinner />
       ) : (
         <CategoryContainer>
           {products &&
