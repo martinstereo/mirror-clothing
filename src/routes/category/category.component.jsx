@@ -25,11 +25,15 @@ const Category = () => {
   useEffect(() => {
     setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
+
   return (
     <>
       <CategoryTitle>{category.toUpperCase()}</CategoryTitle>
       {isLoading ? (
-        <Spinner />
+        <>
+          {console.log('Spinner is loading')}
+          <Spinner />
+        </>
       ) : (
         <CategoryContainer>
           {products &&
