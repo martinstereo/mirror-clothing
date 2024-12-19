@@ -9,7 +9,6 @@ import { persistStore, persistReducer } from "redux-persist";
 
 import storage from "redux-persist/lib/storage"
 
-
 const middleWares = [
   process.env.NODE_ENV === 'development' && logger,
   thunk,
@@ -19,7 +18,7 @@ const middleWares = [
 const persistConfig = {
   key: 'key',
   storage,
-  blacklist: ['user'],
+  whitelist: ['cart'],
 }
 
 const composeEnhancer =
@@ -28,9 +27,7 @@ const composeEnhancer =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   compose;
 
-
 const persistedReducer = persistReducer(persistConfig, rootReducer)
-
 
 const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares))
 
