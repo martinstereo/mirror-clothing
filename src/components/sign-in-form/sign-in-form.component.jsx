@@ -1,14 +1,19 @@
-import { React, useState } from 'react';
+import { useState } from 'react';
 
-import {
-  signInWithGooglePopup,
-  signInAuthUserWithEmailAndPassword,
-} from '../../utils/firebase/firebase.utils';
+//Redux
+import { useDispatch } from 'react-redux';
 
+//Components
 import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
-
+//Styles
 import { SignInContainer, Title, ButtonContainer } from './sign-in-form.styles';
+
+//Redux Store Actions
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from '../../store/user/user.action';
 
 const defaultFormFields = {
   email: '',
@@ -16,6 +21,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -26,8 +32,7 @@ const SignInForm = () => {
   const handleSignInSubmit = async (event) => {
     event.preventDefault();
     try {
-      await signInAuthUserWithEmailAndPassword(email, password);
-      resetFormFields();
+      dispatch(emailSignInStart(email, password));
     } catch (error) {
       switch (error.code) {
         case 'auth/invalid-credential':
@@ -44,11 +49,12 @@ const SignInForm = () => {
           break;
       }
     }
+    resetFormFields();
   };
 
   // Get google sign-in auth from firebase with pop-up
   const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
+    dispatch(googleSignInStart());
   };
 
   const handleChange = (event) => {
