@@ -4,7 +4,7 @@ import { useState } from 'react';
 //Redux
 import { useDispatch } from 'react-redux';
 
-import { emailSignUpStart } from '../../store/user/user.action';
+import { signUpStart } from '../../store/user/user.action';
 
 //Components and Styles
 import FormInput from '../form-input/form-input.component';
@@ -34,7 +34,7 @@ const SignUpForm = () => {
       return;
     }
     try {
-      dispatch(emailSignUpStart(email, password));
+      dispatch(signUpStart(email, password, displayName));
       resetFormFields();
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {

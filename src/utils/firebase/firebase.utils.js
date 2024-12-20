@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 
 import {
   getAuth,
@@ -7,8 +7,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged
-} from "firebase/auth";
+  onAuthStateChanged,
+} from 'firebase/auth';
 
 import {
   getFirestore,
@@ -19,7 +19,7 @@ import {
   writeBatch,
   query,
   getDocs,
-} from "firebase/firestore";
+} from 'firebase/firestore';
 
 /*
   Block comment shortcut:
@@ -29,38 +29,42 @@ import {
 
 /* Your web app's Firebase configuration */
 const firebaseConfig = {
-  apiKey: "AIzaSyAru-6Vl02WEsCTywA9zXkfxgnsKXhfxS8", // Not an exposure, only used to ID the Firebase Project
-  authDomain: "mirror-clothing-db.firebaseapp.com",
-  projectId: "mirror-clothing-db",
-  storageBucket: "mirror-clothing-db.firebasestorage.app",
-  messagingSenderId: "592357640508",
-  appId: "1:592357640508:web:a206922e421412782d3639"
+  apiKey: 'AIzaSyAru-6Vl02WEsCTywA9zXkfxgnsKXhfxS8', // Not an exposure, only used to ID the Firebase Project
+  authDomain: 'mirror-clothing-db.firebaseapp.com',
+  projectId: 'mirror-clothing-db',
+  storageBucket: 'mirror-clothing-db.firebasestorage.app',
+  messagingSenderId: '592357640508',
+  appId: '1:592357640508:web:a206922e421412782d3639',
 };
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
-console.log(firebaseApp.name)
+console.log(firebaseApp.name);
 
 const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({
-  prompt: "select_account"
+  prompt: 'select_account',
 });
 
 export const auth = getAuth();
-export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, googleProvider);
 
 export const db = getFirestore();
 
 //Create instance for storing shop data
-export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
-  const collectionRef = collection(db, collectionKey)
-  const batch = writeBatch(db)
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
 
   objectsToAdd.forEach((object) => {
-    const docRef = doc(collectionRef, object.title.toLowerCase())
-    batch.set(docRef, object)
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
   });
   await batch.commit();
   console.log('done');
@@ -68,15 +72,18 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
 
 // Retrieves categories from database
 export const getCategoriesAndDocuments = async () => {
-  const collectionRef = collection(db, 'categories')
-  const q = query(collectionRef)
+  const collectionRef = collection(db, 'categories');
+  const q = query(collectionRef);
 
-  const querySnapshot = await getDocs(q)
-  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data())
-}
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+};
 
 // Create user and store in Firebase
-export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  additionalInformation = {}
+) => {
   const userDocRef = doc(db, 'users', userAuth.uid);
 
   const userSnapshot = await getDoc(userDocRef);
@@ -104,12 +111,12 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
-}
+};
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
-  return await signInWithEmailAndPassword(auth, email, password)
-}
+  return await signInWithEmailAndPassword(auth, email, password);
+};
 
 export const signOutUser = async () => await signOut(auth);
 
@@ -122,10 +129,10 @@ export const getCurrentUser = () => {
     const unsubscribe = onAuthStateChanged(
       auth,
       (userAuth) => {
-        unsubscribe()
-        resolve(userAuth)
+        unsubscribe();
+        resolve(userAuth);
       },
       reject
-    )
-  })
-}
+    );
+  });
+};
