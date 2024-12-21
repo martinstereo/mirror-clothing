@@ -5,7 +5,7 @@ import {
 } from '../../store/cart/cart.selector';
 
 import { CartIconContainer, ShoppingIcon, ItemCount } from './cart-icon.styles';
-import { setIsCartOpen } from '../../store/cart/cart.action';
+import { setIsCartOpen } from '../../store/cart/cart.reducer';
 
 const CartIcon = () => {
   const dispatch = useDispatch();
