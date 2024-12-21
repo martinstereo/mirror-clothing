@@ -21,7 +21,7 @@ const NavigationBar = () => {
   const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);
 
-  const signOutHandler = () => {
+  const signOutUserHandler = () => {
     dispatch(signOutStart());
   };
 
@@ -37,7 +37,7 @@ const NavigationBar = () => {
           </NavLink>
 
           {currentUser ? (
-            <NavLink as='span' onClick={signOutHandler}>
+            <NavLink as='span' onClick={signOutUserHandler}>
               <h3>SIGN OUT</h3>
             </NavLink>
           ) : (
