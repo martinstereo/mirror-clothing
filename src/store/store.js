@@ -7,7 +7,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { rootReducer } from './root-reducer';
 
-//import { persistStore, persistReducer } from 'redux-persist';
+import { persistStore /* persistReducer */ } from 'redux-persist';
 
 //import storage from 'redux-persist/lib/storage';
 
@@ -29,8 +29,6 @@ const middleWares = [process.env.NODE_ENV === 'development' && logger].filter(
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   compose; */
 
-//const persistedReducer = persistReducer(persistConfig, rootReducer);
-
 //const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares));
 
 export const store = configureStore({
@@ -49,4 +47,4 @@ export const store = configureStore({
 
 /* sagaMiddleware.run(rootSaga); */
 
-//export const persistor = persistStore(store);
+export const persistor = persistStore(store);
