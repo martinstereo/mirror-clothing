@@ -1,3 +1,4 @@
+import React from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -42,10 +43,10 @@ const PaymentForm = () => {
     const {
       paymentIntent: { client_secret },
     } = response;
-
+    const cardElement = elements.getElement(CardElement);
     const paymentResult = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        card: cardElement,
         billing_details: {
           name: currentUser ? currentUser.displayName : 'guest',
         },
@@ -56,7 +57,6 @@ const PaymentForm = () => {
 
     if (paymentResult.error) {
       alert(paymentResult.error);
-      console.log(paymentResult.paymentIntent.status);
     } else {
       if (paymentResult.paymentIntent.status === 'succeeded') {
         alert('Payment successful');

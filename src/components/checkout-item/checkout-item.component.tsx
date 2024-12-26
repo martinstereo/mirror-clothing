@@ -1,10 +1,12 @@
 import { useDispatch } from 'react-redux';
-
+import React from 'react';
 import {
   addItemToCart,
   removeItemFromCart,
   clearItemFromCart,
 } from '../../store/cart/cart.action';
+
+import { CartItemProps } from '../cart-item/cart-item.component';
 
 import {
   Quantity,
@@ -16,7 +18,7 @@ import {
   QuantityValue,
 } from './checkout-item.styles';
 
-const CheckoutItem = ({ cartItem }) => {
+const CheckoutItem = ({ cartItem }: CartItemProps) => {
   const dispatch = useDispatch();
   const { imageUrl, name, quantity, price } = cartItem;
 

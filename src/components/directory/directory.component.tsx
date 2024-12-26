@@ -1,4 +1,5 @@
 import { DirectoryContainer } from './directory.styles';
+import React from 'react';
 
 import DirectoryItem from '../directory-item/directory-item.component';
 
