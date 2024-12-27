@@ -1,4 +1,9 @@
-import { useState } from 'react';
+import {
+  ChangeEventHandler,
+  EventHandler,
+  FormEventHandler,
+  useState,
+} from 'react';
 import { useDispatch } from 'react-redux';
 
 import FormInput from '../form-input/form-input.component';
@@ -10,7 +15,12 @@ import {
   emailSignInStart,
 } from '../../store/user/user.action';
 
-const defaultFormFields = {
+export type DefaultFormFields = {
+  email: string;
+  password: string;
+};
+
+const defaultFormFields: DefaultFormFields = {
   email: '',
   password: '',
 };
@@ -40,7 +50,7 @@ const SignInForm = () => {
   };
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.arguments;
 
     setFormFields({ ...formFields, [name]: value });
   };
