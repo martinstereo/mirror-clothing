@@ -1,9 +1,4 @@
-import {
-  compose,
-  legacy_createStore,
-  applyMiddleware,
-  Middleware,
-} from 'redux';
+import { compose, createStore, applyMiddleware, Middleware } from 'redux';
 import { persistStore, persistReducer, PersistConfig } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
@@ -48,11 +43,7 @@ const composeEnhancer =
 
 const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares));
 
-export const store = legacy_createStore(
-  persistedReducer,
-  undefined,
-  composedEnhancers
-);
+export const store = createStore(persistedReducer, undefined, composedEnhancers);
 
 sagaMiddleware.run(rootSaga);
 
