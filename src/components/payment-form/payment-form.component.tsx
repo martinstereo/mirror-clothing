@@ -30,39 +30,43 @@ const PaymentForm = () => {
     }
 
     setIsProcessingPayment(true);
-
-    const response = await fetch('/.netlify/functions/create-payment-intent', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ amount: amount * 100 }),
-    }).then((res) => res.json());
-
-    const {
-      paymentIntent: { client_secret },
-    } = response;
-    const cardElement = elements.getElement(CardElement);
-    if (cardElement) {
-      const paymentResult = await stripe.confirmCardPayment(client_secret, {
-        payment_method: {
-          card: cardElement,
-          billing_details: {
-            name: currentUser ? currentUser.displayName : 'guest',
-          },
+    try {
+      const response = await fetch('/.netlify/functions/create-payment-intent', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      });
+        body: JSON.stringify({ amount: amount * 100 }),
+      }).then((res) => res.json());
 
-      setIsProcessingPayment(false);
+      const {
+        paymentIntent: { client_secret },
+      } = response;
+      const cardElement = elements.getElement(CardElement);
+      if (cardElement) {
+        const paymentResult = await stripe.confirmCardPayment(client_secret, {
+          payment_method: {
+            card: cardElement,
+            billing_details: {
+              name: currentUser ? currentUser.displayName : 'guest',
+            },
+          },
+        });
 
-      if (paymentResult.error) {
-        alert(paymentResult.error);
-      } else {
-        if (paymentResult.paymentIntent.status === 'succeeded') {
-          alert('Payment successful');
-          console.log(paymentResult.paymentIntent.status);
+        setIsProcessingPayment(false);
+
+        if (paymentResult.error) {
+          alert(paymentResult.error);
+        } else {
+          if (paymentResult.paymentIntent.status === 'succeeded') {
+            alert('Payment successful');
+            console.log(paymentResult.paymentIntent.status);
+          }
         }
+        setIsProcessingPayment(false);
       }
+    } catch (error) {
+      alert(error);
       setIsProcessingPayment(false);
     }
   };

@@ -7,8 +7,7 @@ export const BaseButton = styled.button`
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
-  line-height: 50px;
-  padding: 0 35px 0 35px;
+  padding: 0 35px;
   font-size: 15px;
   background-color: black;
   color: white;
@@ -20,6 +19,20 @@ export const BaseButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 800px) {
+    min-width: 140px;
+    height: 45px;
+    padding: 0 25px;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 500px) {
+    min-width: 120px;
+    height: 40px;
+    padding: 0 20px;
+    font-size: 12px;
+  }
 
   &:hover {
     background-color: white;
@@ -52,4 +65,14 @@ export const InvertedButton = styled(BaseButton)`
 export const ButtonSpinner = styled(SpinnerContainer)`
   width: 30px;
   height: 30px;
+
+  @media screen and (max-width: 800px) {
+    width: 25px;
+    height: 25px;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 20px;
+    height: 20px;
+  }
 `;

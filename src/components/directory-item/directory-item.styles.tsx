@@ -11,6 +11,7 @@ export const BackgroundImage = styled.div<BackgroundImageProps>`
   background-position: center;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
+
 export const Body = styled.div`
   height: 90px;
   padding: 0 25px;
@@ -29,11 +30,24 @@ export const Body = styled.div`
     font-size: 22px;
     color: #4a4a4a;
     text-transform: uppercase;
+
+    @media screen and (min-width: 800px) {
+      font-size: 28px;
+    }
   }
 
   p {
     font-weight: lighter;
     font-size: 16px;
+
+    @media screen and (min-width: 800px) {
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 45px 15px;
+    height: 70px;
   }
 `;
 
@@ -44,9 +58,9 @@ export const DirectoryItemContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
   margin: 0 7.5px 15px;
   overflow: hidden;
+  position: relative;
 
   &:hover {
     cursor: pointer;
@@ -63,6 +77,10 @@ export const DirectoryItemContainer = styled.div`
 
   &.large {
     height: 380px;
+
+    @media screen and (max-width: 800px) {
+      height: 240px;
+    }
   }
 
   &:first-child {
@@ -71,5 +89,24 @@ export const DirectoryItemContainer = styled.div`
 
   &:last-child {
     margin-left: 7.5px;
+  }
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
+    min-width: 40%;
+  }
+
+  @media screen and (max-width: 400px) {
+    height: 180px;
+    min-width: 90%;
+    margin: 0 0 15px;
+
+    &:first-child {
+      margin-right: 0;
+    }
+
+    &:last-child {
+      margin-left: 0;
+    }
   }
 `;
