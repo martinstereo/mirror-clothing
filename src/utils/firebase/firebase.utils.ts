@@ -47,8 +47,7 @@ googleProvider.setCustomParameters({
 });
 
 export const auth = getAuth();
-export const signInWithGooglePopup = () =>
-  signInWithPopup(auth, googleProvider);
+export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
 
 export const db = getFirestore();
 
@@ -78,9 +77,7 @@ export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map(
-    (docSnapshot) => docSnapshot.data() as Category
-  );
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data() as Category);
 };
 
 export type AdditionalInformation = {
@@ -96,7 +93,7 @@ export type UserData = {
 // Create user and store in Firebase
 export const createUserDocumentFromAuth = async (
   userAuth: User,
-  additionalInformation: AdditionalInformation
+  additionalInformation = {} as AdditionalInformation
 ): Promise<void | QueryDocumentSnapshot<UserData>> => {
   const userDocRef = doc(db, 'users', userAuth.uid);
 
