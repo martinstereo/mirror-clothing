@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ReactComponent as ShoppingIconSvg } from '../../assets/shopping-bag.svg';
 
 export const CartIconContainer = styled.div`
   width: 60px;
@@ -11,11 +10,10 @@ export const CartIconContainer = styled.div`
   cursor: pointer;
   margin-bottom: 6px;
   margin-inline: 10px;
-`;
-
-export const ShoppingIcon = styled(ShoppingIconSvg)`
-  width: 30px;
-  height: 30px;
+  svg {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const ItemCount = styled.span`

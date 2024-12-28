@@ -6,19 +6,14 @@ import {
   withMatcher,
 } from '../../utils/reducer/reducer.utils';
 
-const addCartItem = (
-  cartItems: CartItem[],
-  productToAdd: CategoryItem
-): CartItem[] => {
-  const existingCartItem = cartItems.find(
-    (cartItem) => cartItem.id === productToAdd.id
-  );
+const addCartItem = (cartItems: CartItem[], productToAdd: CategoryItem): CartItem[] => {
+  const existingCartItem = cartItems.find((cartItem) => cartItem.id === productToAdd.id);
 
   if (existingCartItem) {
     return cartItems.map((cartItem) =>
-      cartItem.id === productToAdd.id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem
+      cartItem.id === productToAdd.id ?
+        { ...cartItem, quantity: cartItem.quantity + 1 }
+      : cartItem
     );
   }
 
@@ -41,16 +36,13 @@ const removeCartItem = (
 
   // return back cartitems with matching cart item with reduced quantity
   return cartItems.map((cartItem) =>
-    cartItem.id === cartItemToRemove.id
-      ? { ...cartItem, quantity: cartItem.quantity - 1 }
-      : cartItem
+    cartItem.id === cartItemToRemove.id ?
+      { ...cartItem, quantity: cartItem.quantity - 1 }
+    : cartItem
   );
 };
 
-const clearCartItem = (
-  cartItems: CartItem[],
-  cartItemToClear: CartItem
-): CartItem[] =>
+const clearCartItem = (cartItems: CartItem[], cartItemToClear: CartItem): CartItem[] =>
   cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 
 //Action types
@@ -69,11 +61,9 @@ export const setIsCartOpen = withMatcher(
     createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, boolean)
 );
 
-export const setCartItems = withMatcher(
-  (cartItems: CartItem[]): SetCartItems => {
-    return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, cartItems);
-  }
-);
+export const setCartItems = withMatcher((cartItems: CartItem[]): SetCartItems => {
+  return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, cartItems);
+});
 
 export const addItemToCart = withMatcher(
   (cartItems: CartItem[], productToAdd: CategoryItem): SetCartItems => {

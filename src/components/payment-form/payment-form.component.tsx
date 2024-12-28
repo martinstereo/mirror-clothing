@@ -1,6 +1,5 @@
-import React from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCartTotal } from '../../store/cart/cart.selector';
 import { selectCurrentUser } from '../../store/user/user.selector';
@@ -19,7 +18,7 @@ const PaymentForm = () => {
   const currentUser = useSelector(selectCurrentUser);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
-  const handlePaymentSubmit = async (event) => {
+  const handlePaymentSubmit = async (event: FormEvent<HTMLFormElement>) => {
     // We don't want to let default form submission happen here,
     // which would refresh the page.
     event.preventDefault();
@@ -44,26 +43,28 @@ const PaymentForm = () => {
       paymentIntent: { client_secret },
     } = response;
     const cardElement = elements.getElement(CardElement);
-    const paymentResult = await stripe.confirmCardPayment(client_secret, {
-      payment_method: {
-        card: cardElement,
-        billing_details: {
-          name: currentUser ? currentUser.displayName : 'guest',
+    if (cardElement) {
+      const paymentResult = await stripe.confirmCardPayment(client_secret, {
+        payment_method: {
+          card: cardElement,
+          billing_details: {
+            name: currentUser ? currentUser.displayName : 'guest',
+          },
         },
-      },
-    });
+      });
 
-    setIsProcessingPayment(false);
+      setIsProcessingPayment(false);
 
-    if (paymentResult.error) {
-      alert(paymentResult.error);
-    } else {
-      if (paymentResult.paymentIntent.status === 'succeeded') {
-        alert('Payment successful');
-        console.log(paymentResult.paymentIntent.status);
+      if (paymentResult.error) {
+        alert(paymentResult.error);
+      } else {
+        if (paymentResult.paymentIntent.status === 'succeeded') {
+          alert('Payment successful');
+          console.log(paymentResult.paymentIntent.status);
+        }
       }
+      setIsProcessingPayment(false);
     }
-    setIsProcessingPayment(false);
   };
 
   return (

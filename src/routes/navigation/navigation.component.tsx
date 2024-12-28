@@ -31,13 +31,11 @@ const Navigation = () => {
         <NavLinks>
           <NavLink to='/shop'>SHOP</NavLink>
 
-          {currentUser ? (
-            <NavLink as='span' onClick={signOutUser}>
+          {currentUser ?
+            <NavLink to='' as='span' onClick={signOutUser} style={{ cursor: 'pointer' }}>
               SIGN OUT
             </NavLink>
-          ) : (
-            <NavLink to='/auth'>SIGN IN</NavLink>
-          )}
+          : <NavLink to='/auth'>SIGN IN</NavLink>}
           <CartIcon />
         </NavLinks>
         {isCartOpen && <CartDropdown />}

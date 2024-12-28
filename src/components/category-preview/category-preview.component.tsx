@@ -1,21 +1,14 @@
-import React from 'react';
 import ProductCard from '../product-card/product-card.component';
 import {
   CategoryPreviewContainer,
   Title,
   PreviewContainer,
 } from './category-preview.styles';
-
-interface Product {
-  id: number;
-  name: string;
-  imageUrl: string;
-  price: number;
-}
+import { CategoryItem } from '../../store/categories/categories.types';
 
 type CategoryPreviewProps = {
   title: string;
-  products: Product[];
+  products: CategoryItem[];
 };
 
 const CategoryPreview = ({ title, products }: CategoryPreviewProps) => {
@@ -26,7 +19,12 @@ const CategoryPreview = ({ title, products }: CategoryPreviewProps) => {
       </h2>
       <PreviewContainer>
         {products.slice(0, 4).map((product) => {
-          return <ProductCard key={product.id} product={product} />;
+          return (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
+          );
         })}
       </PreviewContainer>
     </CategoryPreviewContainer>

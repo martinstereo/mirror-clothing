@@ -1,17 +1,9 @@
 import React from 'react';
-import {
-  CartItemContainer,
-  ItemDetailsContainer,
-  Text,
-} from './cart-item.styles';
+import { CartItemContainer, ItemDetailsContainer, Text } from './cart-item.styles';
+import { CartItem as CartItemType } from '../../store/cart/cart.types';
 
 export type CartItemProps = {
-  cartItem: {
-    name: string;
-    quantity: number;
-    imageUrl: string;
-    price: number;
-  };
+  cartItem: CartItemType;
 };
 
 const CartItem = ({ cartItem }: CartItemProps) => {
@@ -19,7 +11,10 @@ const CartItem = ({ cartItem }: CartItemProps) => {
 
   return (
     <CartItemContainer>
-      <img src={imageUrl} alt={`${name}`} />
+      <img
+        src={imageUrl}
+        alt={`${name}`}
+      />
       <ItemDetailsContainer>
         <Text>{name}</Text>
         <Text>
