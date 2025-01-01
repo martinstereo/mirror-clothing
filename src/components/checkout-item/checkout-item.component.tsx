@@ -18,12 +18,13 @@ import {
 
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { CartItem } from '../../store/cart/cart.types';
+import { memo } from 'react';
 
 type CheckoutItemProps = {
   cartItem: CartItem;
 };
 
-const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
+const CheckoutItem = memo(({ cartItem }: CheckoutItemProps) => {
   const { imageUrl, name, quantity, price } = cartItem;
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
@@ -36,10 +37,7 @@ const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
   return (
     <CheckoutItemContainer>
       <ImageContainer>
-        <img
-          src={imageUrl}
-          alt={`${name}`}
-        />
+        <img src={imageUrl} alt={`${name}`} />
       </ImageContainer>
       <TextSpan>{name}</TextSpan>
       <Quantity>
@@ -51,6 +49,6 @@ const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
       <RemoveButton onClick={handleClearCartItem}>&#10005;</RemoveButton>
     </CheckoutItemContainer>
   );
-};
+});
 
 export default CheckoutItem;
