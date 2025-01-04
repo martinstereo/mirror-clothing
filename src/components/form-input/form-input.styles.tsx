@@ -16,6 +16,7 @@ const shrinkLabelStyles = css`
 
 type FormInputLabelProps = {
   shrink?: boolean;
+  children?: React.ReactNode;
 };
 
 export const Group = styled.div`

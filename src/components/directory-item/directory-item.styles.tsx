@@ -52,7 +52,12 @@ export const Body = styled.div`
   }
 `;
 
-export const DirectoryItemContainer = styled.div`
+interface DirectoryItemContainerProps {
+  children: React.ReactNode;
+  onClick: () => void;
+}
+
+export const DirectoryItemContainer = styled.div<DirectoryItemContainerProps>`
   min-width: 30%;
   height: 240px;
   flex: 1 1 auto;

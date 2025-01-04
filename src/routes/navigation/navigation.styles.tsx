@@ -51,7 +51,14 @@ export const NavLinks = styled.div`
   }
 `;
 
-export const NavLink = styled(Link)`
+interface NavLinkProps {
+  to?: string;
+  as?: string;
+  onClick?: () => Promise<void>;
+  children?: React.ReactNode;
+}
+
+export const NavLink = styled(Link)<NavLinkProps>`
   padding: 10px 15px;
   cursor: pointer;
   font-weight: bold;

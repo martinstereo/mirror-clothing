@@ -15,7 +15,12 @@ export const PaymentFormContainer = styled.div`
   }
 `;
 
-export const FormContainer = styled.form`
+interface FormContainerProps {
+  children?: React.ReactNode;
+  onSubmit?: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
+}
+
+export const FormContainer = styled.form<FormContainerProps>`
   height: 100px;
   min-width: 500px;
 

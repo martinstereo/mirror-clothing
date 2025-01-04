@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const CartIconContainer = styled.div`
+interface CartIconContainerProps {
+  children: React.ReactNode;
+  onClick: () => void;
+}
+
+export const CartIconContainer = styled.div<CartIconContainerProps>`
   width: 60px;
   height: 45px;
   position: relative;

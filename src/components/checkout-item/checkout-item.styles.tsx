@@ -28,7 +28,12 @@ export const Quantity = styled(TextSpan)`
   display: flex;
 `;
 
-export const ArrowContainer = styled.div`
+interface ArrowContainerProps {
+  children: React.ReactNode;
+  onClick: () => void;
+}
+
+export const ArrowContainer = styled.div<ArrowContainerProps>`
   cursor: pointer;
 `;
 
@@ -38,7 +43,12 @@ export const QuantityValue = styled.span`
   text-align: center;
 `;
 
-export const RemoveButton = styled.div`
+interface RemoveButtonProps {
+  children: React.ReactNode;
+  onClick: () => void;
+}
+
+export const RemoveButton = styled.div<RemoveButtonProps>`
   padding-left: 12px;
   cursor: pointer;
 `;
