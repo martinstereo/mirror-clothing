@@ -1,10 +1,13 @@
-import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-import PaymentForm from '../../components/payment-form/payment-form.component';
+import { lazy } from 'react';
 
 import { CheckoutContainer, CheckoutHeader, HeaderBlock, Total } from './checkout.styles';
 import { useSelector } from 'react-redux';
 import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selector';
 
+import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+const PaymentForm = lazy(
+  () => import('../../components/payment-form/payment-form.component')
+);
 const Checkout = () => {
   const cartTotal = useSelector(selectCartTotal);
   const cartItems = useSelector(selectCartItems);

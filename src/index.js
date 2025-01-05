@@ -8,7 +8,6 @@ import App from './App';
 import { persistor, store } from './store/store';
 import { stripePromise } from './utils/stripe/stripe.utils';
 import { PersistGate } from 'redux-persist/integration/react';
-import { GlobalStyles } from './global-styles';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,7 +16,6 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <GlobalStyles />
           <Elements stripe={stripePromise}>
             <App />
           </Elements>

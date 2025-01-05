@@ -116,4 +116,8 @@ export const DirectoryItemContainer = styled.div<DirectoryItemContainerProps>`
       margin-left: 0;
     }
   }
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
+  }
 `;

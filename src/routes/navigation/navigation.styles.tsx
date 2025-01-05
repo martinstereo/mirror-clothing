@@ -8,13 +8,13 @@ export const StyledMirrorLogo = styled(MirrorLogo)`
   height: 100%;
 
   @media screen and (max-width: 800px) {
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
   }
 
   @media screen and (max-width: 500px) {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
   }
 `;
 
