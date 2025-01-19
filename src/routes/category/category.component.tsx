@@ -22,8 +22,6 @@ const Category = () => {
 
   useEffect(() => {
     if (categoriesMap && category) {
-      console.log('Category:', category);
-      console.log('CategoriesMap:', categoriesMap);
       setProducts(categoriesMap[category] || []);
     }
   }, [category, categoriesMap]);

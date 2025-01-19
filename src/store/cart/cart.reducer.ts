@@ -1,4 +1,4 @@
-import { AnyAction } from 'redux-saga';
+import { AnyAction } from 'redux';
 import { CartItem } from './cart.types';
 import { setIsCartOpen, setCartItems } from './cart.action';
 
@@ -12,10 +12,7 @@ export const CART_INITIAL_STATE: CartState = {
   cartItems: [],
 };
 
-export const cartReducer = (
-  state = CART_INITIAL_STATE,
-  action: AnyAction
-): CartState => {
+export const cartReducer = (state = CART_INITIAL_STATE, action: AnyAction): CartState => {
   if (setIsCartOpen.match(action)) {
     return { ...state, isCartOpen: action.payload };
   }

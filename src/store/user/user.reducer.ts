@@ -1,4 +1,4 @@
-import { AnyAction } from 'redux-saga';
+import { AnyAction } from 'redux';
 import { UserData } from '../../utils/firebase/firebase.utils';
 import {
   signInFailed,
@@ -20,10 +20,7 @@ export const INITIAL_STATE: UserState = {
   error: null,
 };
 
-export const userReducer = (
-  state = INITIAL_STATE,
-  action: AnyAction
-): UserState => {
+export const userReducer = (state = INITIAL_STATE, action: AnyAction): UserState => {
   if (signInSuccess.match(action)) {
     return { ...state, currentUser: action.payload };
   }

@@ -12,8 +12,6 @@ const CategoriesPreview = () => {
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
 
-  console.log(categoriesMap);
-
   return (
     <Fragment>
       {isLoading ? (
