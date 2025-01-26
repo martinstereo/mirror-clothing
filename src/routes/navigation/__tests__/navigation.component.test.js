@@ -34,4 +34,29 @@ describe('Navigation test', () => {
     const signInLinkElement = screen.queryByText(/sign in/i);
     expect(signInLinkElement).toBeNull();
   });
+  test('should render Cart Dropdown if isCartOpen is true', () => {
+    renderWithProviders(<Navigation />, {
+      preloadedState: {
+        cart: {
+          isCartOpen: true,
+          cartItems: [],
+        },
+      },
+    });
+
+    const cartDropdownElement = screen.queryByText(/Your cart is empty/i);
+    expect(cartDropdownElement).toBeInTheDocument();
+  });
+  test('should not render cartDropDown if isCartOpen is false', () => {
+    renderWithProviders(<Navigation />, {
+      preloadedState: {
+        cart: {
+          isCartOpen: false,
+          cartItems: [],
+        },
+      },
+    });
+    const signInLinkElement = screen.queryByText(/Your cart is empty/i);
+    expect(signInLinkElement).toBeNull();
+  });
 });
