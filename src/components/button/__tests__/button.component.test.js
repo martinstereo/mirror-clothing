@@ -1,20 +1,33 @@
 import 'jest-styled-components';
 import { render, screen, cleanup } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
-import Button from '../button.component';
-
-const renderWithTheme = (component) => {
-  return render(<ThemeProvider theme={{}}>{component}</ThemeProvider>);
-};
+import Button, { BUTTON_TYPE_CLASSES } from '../button.component';
 
 describe('Button tests', () => {
   afterEach(() => {
     cleanup();
   });
-  test('should render base button when nothing is passed', () => {
-    renderWithTheme(<Button>Test</Button>);
 
+  test('should render base button when nothing is passed', () => {
+    render(<Button />);
     const buttonElement = screen.getByRole('button');
     expect(buttonElement).toHaveStyleRule('background-color', 'black');
+  });
+
+  test('should render google button when passed google button type', () => {
+    render(<Button buttonType={BUTTON_TYPE_CLASSES.google} />);
+    const buttonElement = screen.getByRole('button');
+    expect(buttonElement).toHaveStyleRule('background-color', '#4285f4');
+  });
+
+  test('should render inverted button when passed inverted button type', () => {
+    render(<Button buttonType={BUTTON_TYPE_CLASSES.inverted} />);
+    const buttonElement = screen.getByRole('button');
+    expect(buttonElement).toHaveStyleRule('background-color', 'white');
+  });
+
+  test('should be disabled if isLoading is true', () => {
+    render(<Button isLoading={true} />);
+    const buttonElement = screen.getByRole('button');
+    expect(buttonElement).toBeDisabled();
   });
 });
