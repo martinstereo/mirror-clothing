@@ -11,7 +11,6 @@ const PaymentForm = lazy(
 const Checkout = () => {
   const cartTotal = useSelector(selectCartTotal);
   const cartItems = useSelector(selectCartItems);
-  console.log(typeof cartItems);
   return (
     <CheckoutContainer>
       <CheckoutHeader>

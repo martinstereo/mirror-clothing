@@ -67,7 +67,6 @@ describe('Navigation test', () => {
 
   test('should sign out user when Sign Out is clicked', async () => {
     const mockDispatch = jest.fn();
-
     // Spy on useDispatch from React Redux
     jest.spyOn(reactRedux, 'useDispatch').mockReturnValue(mockDispatch);
 
