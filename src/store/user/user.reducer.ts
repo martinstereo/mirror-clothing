@@ -2,10 +2,10 @@ import { AnyAction } from 'redux';
 import { UserData } from '../../utils/firebase/firebase.utils';
 import {
   signInFailed,
-  signInSuccess,
   signOutFailed,
-  signOutSuccess,
   signUpFailed,
+  signInSuccess,
+  signOutSuccess,
 } from './user.action';
 
 export type UserState = {
