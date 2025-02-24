@@ -8,7 +8,7 @@ import App from './App';
 import { persistor, store } from './store/store';
 import { stripePromise } from './utils/stripe/stripe.utils';
 import { PersistGate } from 'redux-persist/integration/react';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+/* import * as serviceWorkerRegistration from './serviceWorkerRegistration'; */
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,8 +24,12 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-serviceWorkerRegistration.register();
+/* // Unregister the service worker in development
+if (process.env.NODE_ENV === 'development') {
+  serviceWorkerRegistration.unregister();
+} else {
+  serviceWorkerRegistration.register();
+} */
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
